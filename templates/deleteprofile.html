@@ -1,0 +1,9 @@
+<div class="main">
+    <form method="POST">
+       <!-- Security token by Django -->
+       {% csrf_token %}
+       Do you want to delete profile ?
+       <input type="submit" value="Yes" />
+       <a href="/">Cancel</a>
+   </form>
+</div>

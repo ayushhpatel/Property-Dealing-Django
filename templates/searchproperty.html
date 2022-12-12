@@ -1,0 +1,269 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Estate sale - Real Estate Category Bootstrap Responsive Website Template - Property single : W3layouts</title>
+
+  <!-- google fonts -->
+  <link href="//fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{% static 'css/style-starter.css' %}">
+</head>
+
+<body>
+  {% if user.is_authenticated %}
+  {% for property in properties %}
+  <section class="w3l-blog post-content py-5">
+    <div class="container py-lg-4 py-md-3 py-2">
+      <div class="post-content">
+        <h2 class="title-single">{{property.title}}</h2>
+      </div>
+      <div class="blo-singl mb-4">
+        <ul class="blog-single-author-date align-items-center">
+          <li>
+            <p>{{property.house_no}}, {{property.society}}, {{property.locality}}, {{property.city}}</p>
+          </li>
+          <li><span class="fa fa-bed"></span> {{property.bedrooms}} Beds</li>
+          <li><span class="fa fa-bath"></span> {{property.bathrooms}} Baths</li>
+          <li><span class="fa fa-share-square-o"></span> {{property.area}} sqft</li>
+        </ul>
+        <ul class="share-post">
+          <a href="#url" class="cost-estate m-o">₹{{property.price}}</a>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 w3l-news">
+          <div class="blog-single-post">
+            <div class="single-post-image mb-5">
+              <div class="owl-blog owl-carousel owl-theme">
+                <div class="item">
+                  <div class="card">
+                    <img src="{{baseUrl}}/{{property.img}}" class="img-fluid radius-image" style="max-height: 400px;" alt="image">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="single-post-content">
+              <h3 class="post-content-title mb-3">Description</h3>
+              <p class="mb-4">{{property.desc}}</p>
+              <div class="single-bg-white">
+                <h3 class="post-content-title mb-4">Property detail</h3>
+                <ul class="details-list">
+                  <li><strong>Property id :</strong> {{property.id}} </li>
+                  <li><strong>Property size :</strong> {{property.area}} sqft </li>
+                  <li><strong>Bedrooms :</strong> {{property.bedrooms}} </li>
+                  <li><strong>Bathrooms :</strong> {{property.bathrooms}} </li>
+                  <li><strong>Price :</strong> ₹ {{property.price}} </li>
+                  <li><strong>Property Age :</strong> {{property.age}} yrs</li>
+                  <li><strong>Contact Number :</strong> {{property.contactno}} </li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {%endfor%}
+  <!--//blog-posts-->
+  <!-- footers 20 -->
+    
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+      &#10548;
+    </button>
+    <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction()
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          document.getElementById("movetop").style.display = "block";
+        } else {
+          document.getElementById("movetop").style.display = "none";
+        }
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+    <!-- /move top -->
+
+  <!-- jQuery and Bootstrap JS -->
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+
+  <script src="{% static 'js/theme-change.js' %}"></script><!-- theme switch js (light and dark)-->
+
+  <!-- stats number counter-->
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.countup.js' %}"></script>
+  <script>
+    $('.counter').countUp();
+  </script>
+  <!-- //stats number counter -->
+
+  <!-- owlcarousel -->
+  <script src="{% static 'js/owl.carousel.js' %}"></script>
+  <!-- script for blog post slider -->
+  <script>
+    $(document).ready(function () {
+      $('.owl-blog').owlCarousel({
+        loop: true,
+        margin: 30,
+        nav: false,
+        responsiveClass: true,
+        autoplay: false,
+        autoplayTimeout: 5000,
+        autoplaySpeed: 1000,
+        autoplayHoverPause: false,
+        responsive: {
+          0: {
+            items: 1,
+            nav: true
+          },
+          480: {
+            items: 1,
+            nav: true
+          },
+          700: {
+            items: 1,
+            nav: true
+          },
+          1090: {
+            items: 1,
+            nav: true
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for blog post slider -->
+
+  <!-- script for tesimonials carousel slider -->
+  <script>
+    $(document).ready(function () {
+      $("#owl-demo1").owlCarousel({
+        loop: true,
+        nav: false,
+        margin: 50,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          736: {
+            items: 1,
+            nav: false
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for tesimonials carousel slider -->
+
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script>
+    $(document).ready(function () {
+      $('.popup-with-zoom-anim').magnificPopup({
+        type: 'inline',
+
+        fixedContentPos: false,
+        fixedBgPos: true,
+
+        overflowY: 'auto',
+
+        closeBtnInside: true,
+        preloader: false,
+
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'my-mfp-zoom-in'
+      });
+
+      $('.popup-with-move-anim').magnificPopup({
+        type: 'inline',
+
+        fixedContentPos: false,
+        fixedBgPos: true,
+
+        overflowY: 'auto',
+
+        closeBtnInside: true,
+        preloader: false,
+
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'my-mfp-slide-bottom'
+      });
+    });
+  </script>
+
+  <!-- disable body scroll which navbar is in active -->
+  <script>
+    $(function () {
+      $('.navbar-toggler').click(function () {
+        $('body').toggleClass('noscroll');
+      })
+    });
+  </script>
+  <!-- disable body scroll which navbar is in active -->
+
+  <!-- MENU-JS -->
+  <script>
+    $(window).on("scroll", function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 80) {
+        $("#site-header").addClass("nav-fixed");
+      } else {
+        $("#site-header").removeClass("nav-fixed");
+      }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+      $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+      $(window).on("resize", function () {
+        if ($(window).width() > 991) {
+          $("header").removeClass("active");
+        }
+      });
+    });
+  </script>
+  <!-- //MENU-JS -->
+
+  <!-- bootstrap -->
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+  {% else %}
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </symbol>
+  </svg>
+<div class="alert alert-warning d-flex align-items-center" role="alert">
+<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+<a href="accounts/login" class="alert-link">Login</a> &nbsp; to avail Functionality!
+</div>
+{% endif %}
+</body>
+</html>
